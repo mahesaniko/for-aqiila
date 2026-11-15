@@ -1,0 +1,1385 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&display=swap');
+
+:root {
+    --pink: #ffb6d5;
+    --pink-dark: #f28dbb;
+    --purple: #a99be9;
+    --deep-purple: #7666b5;
+    --white: #fffaff;
+    --text: #665477;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+    background: #f9d8ed;
+}
+
+/* BACKGROUND UTAMA */
+
+.page {
+    display: none;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+}
+
+.page.active {
+    display: flex;
+}
+
+.welcome-page,
+.confession-page {
+    background:
+        radial-gradient(ellipse at 15% 80%, #ffd0e8 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, #c8b9fa 0%, transparent 45%),
+        linear-gradient(135deg, #f8c9e5, #d9cafa, #f9d8e8);
+}
+
+.love-page {
+    background:
+        radial-gradient(ellipse at 10% 10%, #ffe1ee, transparent 50%),
+        radial-gradient(ellipse at 90% 90%, #d9cafa, transparent 50%),
+        linear-gradient(135deg, #f9d6e9, #eadcfb, #fce4ed);
+}
+
+/* BINTANG DAN HATI */
+
+#confessionHearts,
+#welcomeHearts,
+#loveHearts,
+#heartParticles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* EFEK BROWSER */
+
+.browser-bar {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 440px);
+    height: 38px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    padding: 0 13px;
+    gap: 7px;
+    z-index: 5;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background: #ff9eaa;
+}
+
+.dot.yellow {
+    background: #ffd98b;
+}
+
+.dot.green {
+    background: #a5dfb0;
+}
+
+.browser-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #967eaa;
+    white-space: nowrap;
+}
+
+/* HALAMAN PEMBUKA */
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 600px);
+    text-align: center;
+    padding: 55px 25px;
+    animation: fadeUp 1.2s ease both;
+}
+
+.small-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #977db6;
+    margin-bottom: 22px;
+}
+
+.welcome-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(42px, 8vw, 70px);
+    font-weight: 400;
+    color: #fffaff;
+    text-shadow: 0 4px 20px rgba(177, 120, 180, 0.3);
+    margin-bottom: 20px;
+}
+
+.welcome-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #806b99;
+    margin-bottom: 35px;
+}
+
+.enter-btn {
+    border: none;
+    padding: 15px 34px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ffacd0, #b5a3ed);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(177, 128, 190, 0.25);
+    transition: 0.3s ease;
+}
+
+.enter-btn:hover {
+    transform: translateY(-5px) scale(1.04);
+    box-shadow: 0 12px 30px rgba(177, 128, 190, 0.35);
+}
+
+.welcome-note {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #9a80ac;
+    letter-spacing: 1px;
+}
+
+.welcome-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(120, 94, 145, 0.7);
+}
+
+/* HALAMAN CONFESSION */
+
+.confession-content {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 600px);
+    text-align: center;
+    padding: 50px 20px;
+    animation: fadeUp 1s ease both;
+}
+
+.main-heart {
+    font-size: 65px;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 8px 12px rgba(232, 120, 175, 0.25));
+    animation: heartbeat 1.8s infinite;
+}
+
+.confession-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(30px, 6vw, 48px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: #fffaff;
+    text-shadow: 0 3px 15px rgba(155, 110, 175, 0.3);
+    margin-bottom: 18px;
+}
+
+.reaction-text {
+    min-height: 28px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #a17db9;
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    min-height: 65px;
+    isolation: isolate;
+}
+
+.yes-btn,
+.no-btn {
+    border: none;
+    padding: 13px 30px;
+    border-radius: 40px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.yes-btn {
+    position: relative;
+    z-index: 5;
+    transform-origin: center;
+    color: white;
+    background: linear-gradient(135deg, #ff91c2, #d18ee9);
+    box-shadow: 0 7px 20px rgba(224, 115, 174, 0.25);
+}
+
+.yes-btn:hover {
+    filter: brightness(1.08);
+}
+
+.no-btn {
+    position: relative;
+    z-index: 4;
+    color: #947ca5;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.no-btn:hover {
+    transform: translateY(-3px);
+}
+
+.bottom-note {
+    margin-top: 35px;
+    font-size: 12px;
+    color: #9a80ac;
+}
+
+/* YES MEMENUHI SELURUH LAYAR */
+
+.yes-btn.takeover {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    z-index: 9999;
+    transform: scale(0.05);
+    animation: takeover 1s ease-out forwards;
+    font-size: clamp(35px, 7vw, 65px);
+    box-shadow: none;
+    cursor: pointer;
+}
+
+@keyframes takeover {
+    0% {
+        transform: scale(0.05);
+        border-radius: 50%;
+    }
+
+    100% {
+        transform: scale(1);
+        border-radius: 0;
+    }
+}
+
+/* HALAMAN LOVE LETTER */
+
+.love-page {
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.scrapbook {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 750px);
+    padding: 35px 25px;
+    margin: 35px auto;
+    text-align: center;
+}
+
+.scrapbook-header {
+    margin-bottom: 30px;
+}
+
+.scrapbook-header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 400;
+    color: #fffaff;
+    text-shadow: 0 3px 15px rgba(155, 110, 175, 0.3);
+}
+
+.scrapbook-header p {
+    color: #987ca9;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* FOTO */
+
+.photo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+}
+
+.photo-card {
+    width: 220px;
+    padding: 10px 10px 20px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(133, 99, 155, 0.15);
+    transition: 0.3s ease;
+}
+
+.photo-one {
+    transform: rotate(-5deg);
+}
+
+.photo-two {
+    transform: rotate(5deg);
+}
+
+.photo-card:hover {
+    transform: rotate(0deg) translateY(-7px);
+}
+
+.photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, #f8c5df, #d8c6f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.photo-card p {
+    font-family: 'Pacifico', cursive;
+    color: #a47ba9;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* SURAT */
+
+.letter {
+    width: min(100%, 600px);
+    margin: 40px auto 20px;
+    padding: 35px 30px;
+    border-radius: 18px;
+    text-align: left;
+    line-height: 1.9;
+    font-size: 14px;
+    color: #78658b;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 35px rgba(144, 109, 165, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+.letter-greeting {
+    font-family: 'Pacifico', cursive;
+    font-size: 23px;
+    color: #d27fac;
+    margin-bottom: 15px;
+}
+
+.letter p {
+    margin-bottom: 15px;
+}
+
+.signature {
+    font-family: 'Pacifico', cursive;
+    font-size: 19px;
+    color: #c27ca9;
+    margin-top: 20px;
+}
+
+.final-message {
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    color: #d27fac;
+    margin-top: 30px;
+}
+
+/* ANIMASI */
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE HP */
+
+@media (max-width: 600px) {
+    .page {
+        padding: 25px 15px;
+    }
+
+    .browser-bar {
+        top: 15px;
+    }
+
+    .welcome-content {
+        padding: 45px 15px;
+    }
+
+    .welcome-description {
+        font-size: 14px;
+    }
+
+    .main-heart {
+        font-size: 55px;
+    }
+
+    .confession-content h1 {
+        font-size: 34px;
+    }
+
+    .button-container {
+        gap: 12px;
+    }
+
+    .yes-btn,
+    .no-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+
+    .photo-area {
+        gap: 20px;
+    }
+
+    .photo-card {
+        width: min(42%, 180px);
+    }
+
+    .letter {
+        padding: 25px 20px;
+        font-size: 13px;
+    }
+
+    .scrapbook {
+        padding: 25px 10px;
+    }
+}
+/* =====================================
+   ANIMASI CELEBRATION
+===================================== */
+
+#heartTransition {
+    display: none;
+    opacity: 1;
+}
+
+.celebration-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    animation: celebrationAppear 1s ease both;
+}
+
+.celebration-heart {
+    font-size: clamp(80px, 15vw, 130px);
+    margin-bottom: 15px;
+    animation: heartPop 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(224, 105, 170, 0.3));
+}
+
+.celebration-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(40px, 8vw, 65px);
+    color: white;
+    text-shadow: 0 5px 20px rgba(180, 110, 170, 0.25);
+    margin-bottom: 10px;
+}
+
+.celebration-content p {
+    font-size: 17px;
+    font-weight: 700;
+    color: #a477b5;
+    margin-bottom: 12px;
+}
+
+.celebration-content span {
+    font-size: 13px;
+    color: #a477b5;
+    letter-spacing: 1px;
+}
+
+#heartParticles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+@keyframes heartPop {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes celebrationAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.6) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+/* =====================================
+   YES CELEBRATION ANIMATION
+===================================== */
+
+#heartTransition {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #ffc9df,
+        #e6c9f5,
+        #fbd9e9
+    );
+
+    opacity: 1;
+}
+
+/* Konten utama */
+
+.celebration-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 20px;
+    animation: celebrationEnter 1s cubic-bezier(.2, .8, .3, 1) both;
+}
+
+.big-heart {
+    font-size: clamp(90px, 18vw, 150px);
+    filter: drop-shadow(0 10px 25px rgba(218, 105, 170, .3));
+    animation: heartBeat 1s ease-in-out infinite;
+}
+
+.celebration-content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(42px, 9vw, 72px);
+    color: white;
+    margin: 10px 0;
+    text-shadow: 0 4px 15px rgba(180, 110, 170, .3);
+}
+
+.celebration-content h2 {
+    color: #b47cbd;
+    font-size: clamp(19px, 4vw, 27px);
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.celebration-content p {
+    color: #a477b5;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Hati yang meledak */
+
+.celebration-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.burst-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: var(--size);
+    color: white;
+    opacity: 0;
+    animation: heartBurst 2.2s ease-out var(--delay) forwards;
+}
+
+/* Mode langit senja */
+
+#heartTransition.sunset-mode {
+    background: linear-gradient(
+        180deg,
+        #f5c5df 0%,
+        #cdb8ed 45%,
+        #f6d5e5 100%
+    );
+    transition: background 2s ease;
+}
+
+#heartTransition.sunset-mode .celebration-content {
+    animation: sunsetDisappear 1.2s ease forwards;
+}
+
+.sunset-message {
+    position: absolute;
+    z-index: 4;
+    text-align: center;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: sunsetAppear 1.5s ease 3.4s forwards;
+}
+
+.sunset-message div {
+    font-size: 35px;
+    margin-top: 15px;
+    animation: heartBeat 1s infinite;
+}
+
+/* Transisi ke halaman surat */
+
+#heartTransition.fade-away {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* KEYFRAMES */
+
+@keyframes celebrationEnter {
+    from {
+        opacity: 0;
+        transform: scale(.5) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes heartBurst {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(.2);
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(360deg)
+            scale(1.2);
+    }
+}
+
+@keyframes sunsetDisappear {
+    to {
+        opacity: 0;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes sunsetAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =====================================
+   FIX CELEBRATION LAYOUT
+===================================== */
+
+#heartTransition {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Pusatkan seluruh tulisan */
+#heartTransition .celebration-content {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 20px;
+    z-index: 3;
+}
+
+/* Hati utama */
+#heartTransition .big-heart {
+    display: block;
+    font-size: clamp(100px, 18vw, 160px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+    animation: heartBeat 1s ease-in-out infinite;
+}
+
+/* Tulisan YAYYY */
+#heartTransition .celebration-content h1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(45px, 9vw, 75px);
+    margin: 0 0 12px;
+    color: white;
+}
+
+/* Tulisan SHE SAID YES */
+#heartTransition .celebration-content h2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(20px, 4vw, 30px);
+    letter-spacing: 3px;
+    margin: 0 0 15px;
+    color: #a477b5;
+}
+
+/* Kalimat kecil */
+#heartTransition .celebration-content p {
+    width: 100%;
+    text-align: center;
+    font-size: clamp(13px, 3vw, 17px);
+    color: #a477b5;
+}
+
+/* Lapisan partikel */
+#heartTransition .celebration-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Hati ledakan */
+#heartTransition .burst-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    font-size: var(--size);
+    line-height: 1;
+    opacity: 0;
+
+    animation:
+        heartBurst 2.4s cubic-bezier(.15,.75,.25,1)
+        var(--delay) forwards;
+}
+
+@keyframes heartBurst {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.2);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            translate(var(--x), var(--y))
+            rotate(300deg)
+            scale(1.3);
+    }
+}
+/* =====================================
+   NO BUTTON REACTION TEXT
+===================================== */
+
+#reactionText {
+    color: #9b527f !important;
+    font-size: clamp(16px, 3.5vw, 20px);
+    font-weight: 800;
+    text-align: center;
+
+    text-shadow:
+        0 1px 2px rgba(255, 255, 255, 0.9),
+        0 2px 8px rgba(145, 75, 125, 0.18);
+
+    background: rgba(255, 255, 255, 0.55);
+    padding: 10px 20px;
+    border-radius: 20px;
+
+    display: inline-block;
+    min-height: 20px;
+    max-width: 90%;
+
+    animation: reactionPop 0.4s ease;
+}
+
+@keyframes reactionPop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* REACTION TEXT - NO BUTTON */
+
+.reaction-text {
+    color: #873b70 !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.85);
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+
+    padding: 12px 22px;
+    border-radius: 18px;
+
+    width: fit-content;
+    max-width: 85%;
+    margin: -5px auto 20px;
+    position: relative;
+    z-index: 10001;
+
+    text-shadow: none !important;
+    box-shadow: 0 4px 15px rgba(130, 65, 110, 0.12);
+    transform: translateY(-20px);
+}
+/* UKURAN FOTO SCRAPBOOK */
+
+.photo-card {
+    width: 220px;
+    padding: 12px 12px 18px;
+    box-sizing: border-box;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+.photo-card small {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+}
+/* POLAROID AESTHETIC */
+
+.photo-card {
+    background: #fffdfd;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(100, 60, 100, 0.18);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Foto pertama sedikit miring ke kiri */
+.photo-one {
+    transform: rotate(-5deg);
+}
+
+/* Foto kedua sedikit miring ke kanan */
+.photo-two {
+    transform: rotate(5deg);
+}
+
+/* Efek ketika kursor diarahkan ke foto */
+.photo-one:hover {
+    transform: rotate(-2deg) translateY(-10px) scale(1.04);
+    box-shadow: 0 15px 28px rgba(100, 60, 100, 0.23);
+}
+
+.photo-two:hover {
+    transform: rotate(2deg) translateY(-10px) scale(1.04);
+    box-shadow: 0 15px 28px rgba(100, 60, 100, 0.23);
+}
+.photo-area {
+    position: relative;
+}
+
+.scrapbook-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.deco-heart,
+.deco-star,
+.deco-ribbon {
+    position: absolute;
+}
+
+.heart-one {
+    top: 5%;
+    left: 2%;
+    font-size: 35px;
+    color: #f28bb8;
+}
+
+.heart-two {
+    bottom: 5%;
+    right: 2%;
+    font-size: 30px;
+    color: #d58acb;
+}
+
+.deco-star {
+    top: 15%;
+    right: 5%;
+    font-size: 25px;
+    color: #e9b7d5;
+}
+
+.deco-ribbon {
+    bottom: 10%;
+    left: 3%;
+    font-size: 35px;
+}
+/* SCRAPBOOK DECORATION ANIMATIONS */
+
+/* Hati bergerak naik turun */
+.heart-one {
+    animation: floatDecoration 3s ease-in-out infinite;
+}
+
+.heart-two {
+    animation: floatDecoration 3.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+/* Bintang berkelap-kelip */
+.deco-star {
+    animation: sparkleDecoration 1.8s ease-in-out infinite alternate;
+}
+
+/* Pita bergoyang */
+.deco-ribbon {
+    animation: ribbonWiggle 3s ease-in-out infinite;
+}
+
+@keyframes floatDecoration {
+    0%, 100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -10px;
+    }
+}
+
+@keyframes sparkleDecoration {
+    from {
+        opacity: 0.4;
+        scale: 0.8;
+    }
+    to {
+        opacity: 1;
+        scale: 1.25;
+    }
+}
+
+@keyframes ribbonWiggle {
+    0%, 100% {
+        rotate: -8deg;
+    }
+    50% {
+        rotate: 8deg;
+    }
+}
+/* =====================================
+   LOVE LETTER - PAPER AESTHETIC
+===================================== */
+
+.letter {
+    position: relative;
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #fff4ed,
+            #fff9f5
+        );
+
+    padding: 35px 30px;
+    margin: 40px auto;
+
+    max-width: 550px;
+    width: 90%;
+
+    border: 1px solid #f5dfdc;
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 30px rgba(120, 75, 90, 0.13),
+        0 2px 5px rgba(120, 75, 90, 0.06);
+
+    line-height: 1.9;
+}
+
+/* Greeting */
+.letter-greeting {
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    color: #c4779c;
+    margin-bottom: 22px;
+}
+
+/* Isi surat */
+.letter p {
+    color: #765d68;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+/* Kalimat spesial */
+.letter h2 {
+    font-family: 'Pacifico', cursive;
+    color: #c4779c;
+    font-size: 23px;
+    text-align: center;
+    margin: 28px 0;
+}
+
+/* Tanda tangan */
+.letter .signature {
+    font-family: 'Pacifico', cursive;
+    color: #b66b91;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 25px;
+}
+/* =====================================
+   LOVE LETTER ENTRANCE ANIMATION
+===================================== */
+
+.letter {
+    opacity: 0;
+    transform: translateY(45px);
+}
+
+.letter.show-letter {
+    animation: letterAppear 1.3s ease-out forwards;
+}
+
+@keyframes letterAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* MINI MUSIC PLAYER */
+.music-player {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000000;
+    width: min(310px, calc(100vw - 30px));
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,.75);
+    border-radius: 18px;
+    background: rgba(255, 248, 252, .92);
+    box-shadow: 0 8px 28px rgba(130, 75, 115, .18);
+    backdrop-filter: blur(12px);
+    color: #765d78;
+}
+
+.music-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffc1dc, #cbb8f4);
+    color: white;
+    font-size: 23px;
+}
+
+.music-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.music-details strong {
+    font-size: 12px;
+    color: #9b6286;
+}
+
+.music-details small {
+    font-size: 10px;
+    color: #a88ca6;
+}
+
+.music-controls {
+    position: absolute;
+    right: 18px;
+    top: 20px;
+}
+
+#musicToggle {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #d98db4;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.music-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.music-progress span {
+    font-size: 9px;
+    color: #a88ca6;
+}
+
+#musicProgress {
+    flex: 1;
+    min-width: 0;
+    accent-color: #d98db4;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .music-player {
+        right: 12px;
+        bottom: 12px;
+    }
+}
+/* =====================================
+   PASTEL ROSE COLOR THEME
+===================================== */
+
+/* Background halaman */
+.welcome-page,
+.confession-page {
+    background:
+        radial-gradient(ellipse at 15% 80%, #ffd0e8 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, #f4afcb 0%, transparent 45%),
+        linear-gradient(135deg, #f8c9e5, #f4c5d9, #f9d8e8);
+}
+
+.love-page {
+    background:
+        radial-gradient(ellipse at 10% 10%, #ffe1ee, transparent 50%),
+        radial-gradient(ellipse at 90% 90%, #f4c5d9 0%, transparent 50%),
+        linear-gradient(135deg, #f9d6e9, #f8d5e4, #fce4ed);
+}
+
+/* Tombol masuk */
+.enter-btn {
+    background: linear-gradient(135deg, #f4afcb, #e9a6c4);
+}
+
+/* Tombol YES */
+.yes-btn {
+    background: linear-gradient(135deg, #f4afcb, #e9a6c4);
+}
+
+/* Warna dekorasi foto */
+.photo-placeholder {
+    background: linear-gradient(135deg, #f8c5df, #f4afcb);
+}
+
+/* Celebration */
+#heartTransition {
+    background: linear-gradient(
+        135deg,
+        #ffc9df,
+        #f4afcb,
+        #fbd9e9
+    );
+}
+
+#heartTransition.sunset-mode {
+    background: linear-gradient(
+        180deg,
+        #f5c5df 0%,
+        #f4afcb 45%,
+        #f6d5e5 100%
+    );
+}
+
+/* Dekorasi scrapbook */
+.heart-two {
+    color: #e9a6c4;
+}
+
+/* Music player */
+.music-icon {
+    background: linear-gradient(135deg, #ffc1dc, #f4afcb);
+}
+
+#musicToggle {
+    background: #d98eae;
+}
+
+#musicProgress {
+    accent-color: #d98eae;
+}
+/* CAT DECORATION ON LOVE LETTER */
+
+.letter {
+    position: relative;
+}
+
+.cat-decoration {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.cat-top-right {
+    top: -38px;
+    right: -35px;
+    transform: rotate(12deg);
+}
+
+.cat-bottom-left {
+    bottom: -38px;
+    left: -35px;
+    transform: rotate(-12deg);
+}
+
+@media (max-width: 600px) {
+    .cat-decoration {
+        width: 65px;
+        height: 65px;
+    }
+
+    .cat-top-right {
+        top: -28px;
+        right: -15px;
+    }
+
+    .cat-bottom-left {
+        bottom: -28px;
+        left: -15px;
+    }
+}
